@@ -1,50 +1,88 @@
 const yargs = require('yargs')
+const notes = require('./notes')
 
-//current version yargs
-yargs.version('1.1.0');
-
-//create add command
+//add command
 yargs.command({
     command:'add',
-    describe:'Add a note',
+    describe:'Add a Note',
     builder:{
         title:{
             describe:'Note Title',
-            demandOptions:true,
+            demandOption: true,  //to make body required
+            type:'string'
+        },
+        body:{
+            describe:'Note Body',
+            demandOption:true, //to make body required
             type:'string'
         }
     },
     handler:function(argv){
-        console.log('Title : ',argv.title);
+        // console.log(argv.title);
+        notes.addNote(argv.title,argv.body)
     }
 })
 
-// remove command
+//remove command
 yargs.command({
     command:'remove',
-    describe:'Remove a note',
-    handler:function(){
-        console.log('Remove a note');
+    describe:'Remove Note',
+    builder:{
+        title:{
+            describe:'Note Title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler:function(argv){
+        notes.removeNote(argv.title)
     }
 })
 
-//edit command
+//list note
 yargs.command({
-    command:'edit',
-    describe:'Edit a note',
-    handler:function(){
-        console.log('Edit a note');
+    command:'list',
+    describe:'List Note',
+    handler:function(argv){
+        notes.listNotes()
     }
 })
 
-//update command
+//read note
+yargs.command({
+    command:'read',
+    describe:'Read Note',
+    builder:{
+        title:{
+            describe: 'Note Title',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler:function(argv){
+        notes.readNote(argv.title)
+    }
+})
+
+
 yargs.command({
     command:'update',
-    describe:'update a command',
-    handler:function(){
-        console.log('Update a command');
+    describe:'Update Note',
+    builder:{
+        title:{
+            describe:'Note Title',
+            demandOption:true,
+            type:'string'
+        },
+        body:{
+            describe:'Note Body',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler:function(argv){
+        notes.updateNote(argv.title,argv.body)
     }
 })
 
-//
 yargs.parse()
