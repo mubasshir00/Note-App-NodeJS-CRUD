@@ -5,4 +5,7 @@ CRUD (Create, Read, Update, Delete) is an acronym for ways one can operate on st
 Here I have implemented CRUD functionality to create a Note App using NodeJS . 
 This is a basic project for NodeJS learner (beginner) 
 
-# A
+# Details
+
+## Library . 
+Here I have used yargs to 
