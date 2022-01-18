@@ -8,4 +8,8 @@ This is a basic project for NodeJS learner (beginner)
 # Details
 
 ## Library . 
-Here I have used yargs to 
+Here I have used yargs to create my own command line commands .
+
+## Function 
+
+1) addNote() - 
